@@ -186,26 +186,38 @@ def transform_types(df: pd.DataFrame, type_map: dict) -> pd.DataFrame:
         ... }
         >>> df_typed = transform_types(df, type_map)
     """
- 
-#convert types based in type_map
-    for col, dtype in type_map.items():
-        if col in df.columns:
-           if dtype == 'datetime':
-               df[col] = pd.to_datetime(df[col], errors='coerce')
-        elif dtype == 'numeric':
-               df[col] = pd.to_numeric(df[col],errors='coerce')
-        elif dtype == 'catergory':
-               df[col] = df[col].astype('category')
-        elif dtype == 'string':
-               df[col] = df[col].astype(str)
-        else:
-            print(f"Warning: Unsupported type '{dtype}' for column '{col}'")
+    pass
+    def clean_text(text):
+        if placeholders is None:
+            placeholders = [ 'NA', 'N/A', 'null', 'None', '']
+        if isinstance(text,str):
+            cleaned = text.strip().lower()
+            if cleaned in placeholders:
+                return np.nan
+            return cleaned
+        return text
 
-            print("transformed data as type_map")
-    return df
+    df_copy = df.copy()
+    for col, target_type in type_map.items():
+        if target_type == 'datetime':
+            df_copy[col] = pd.to_datetime(df_copy[col], errors='coerce')
+        elif target_type == 'numeric':
+                df_copy[col] = pd.to_numeric(df_copy[col],errors='coerce')
+        elif target_type == 'catergory':
+            df_copy[col] = df_copy[col].astype('category')
+        elif target_type == 'string':
+            df_copy[col] = df_copy[col].astype(str)
+    print("transformed data as type_map")
+    return df_copy
 
+    #cleaning and transforming together :
 
-    
+    def clean_and_transform(df, type_map, placeholders=None):
+        df_clean = df.copy()
+        for col in df_clean.select_dtypes(include=['object']).columns:
+            df_clean[col] = df_clean[col].map(lambda x: clean_text(x,placeholders))
+        df_transformed = transform_types (df_clean, type_map)
+        return df_transformed
 
 
 
@@ -235,10 +247,10 @@ def create_bins(df: pd.DataFrame, column: str, bins: list,
     
     df_copy = df.copy()
     if new_column is None:
-        new_column = f"{column}_binned"
-    df_copy[new_column] = pd.cut(df_copy[column], bins= bins, labels= labels)
-    print(f"created binned column '{new_column}'")
-    return df_copy
+        new_column = f"(column_binned)"
+        df_copy[new_column] = pd.cut(df_copy[column], bins= bins, labels= labels)
+        print(f"created binned column '{new_column}'")
+        return df_copy
         
     
 def summarize_by_group(df: pd.DataFrame, group_col: str,
@@ -301,7 +313,7 @@ if __name__ == '__main__':
         'age': 'numeric',
         'site': 'category'
     }
-    df_typed = transform_types(df, type_map)
+    df_typed = transform_types(df_filled, type_map)
     print("data transformed successfully")
     #filtere data:
     filters = [{'column': 'age', 'condition': 'greater_than', 'value': 18}]

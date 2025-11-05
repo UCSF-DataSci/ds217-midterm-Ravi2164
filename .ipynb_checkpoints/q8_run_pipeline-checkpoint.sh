@@ -1,4 +1,3 @@
-#!/bin/bash
 # TODO: Add shebang line: #!/bin/bash
 # Assignment 5, Question 8: Pipeline Automation Script
 # Run the clinical trial data analysis pipeline
@@ -7,28 +6,8 @@
 # NOTE: Q2 (q2_process_metadata.py) is a standalone Python fundamentals exercise, not part of the main pipeline
 # NOTE: Q3 (q3_data_utils.py) is a library imported by the notebooks, not run directly
 # NOTE: The main pipeline runs Q4-Q7 notebooks in order
-echo "Starting clinical trial data pipeline..." >> reports/pipeline_log.txt
-#run notebooks in order
-jupyter nbconvert --execute --to notebook --inplace q4_exploration.ipynb
-if [ $? -ne 0 ];then
-    echo "ERROR: Q4 Exploration failed" 
-    exit 1
-fi 
-#continoue with Q5 
-jupyter nbconvert --execute --to notebook --inplace q5_missing_data.ipynb || {
-    echo "ERROR: Q5 Missing Data Analysis failed" 
-    exit 1
-}
-#continoue with Q6 data transformation
-jupyter nbconvert --execute --to  notebook --inplace q6_transformation.ipynb || {
-    echo "ERROR: Q6 Data Transformation failed"
-    exit 1
-}
-#continoue with Q7 intervention comparison
-jupyter nbconvert --execute --to notebook --inplace q7_aggregation.ipynb || {
-    echo "ERROR: Q7 Intervention Comparison failed" 
-    exit 1
-}
+
+echo "Starting clinical trial data pipeline..." > reports/pipeline_log.txt
 
 # TODO: Run analysis notebooks in order (q4-q7) using nbconvert with error handling
 # Use either `$?` or `||` operator to check exit codes and stop on failure

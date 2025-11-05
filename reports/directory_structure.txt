@@ -1,0 +1,26 @@
+total 256
+drwxr-xr-x@ 25 raviolamurataj  staff    800 Oct 25 14:07 .
+drwxr-xr-x   4 raviolamurataj  staff    128 Oct 25 14:07 ..
+-rw-r--r--@  1 raviolamurataj  staff   6148 Oct 24 23:38 .DS_Store
+drwxr-xr-x@ 12 raviolamurataj  staff    384 Oct 22 14:21 .git
+drwxr-xr-x@  4 raviolamurataj  staff    128 Oct 22 14:21 .github
+-rw-r--r--@  1 raviolamurataj  staff      8 Oct 22 14:20 .gitignore
+-rw-r--r--@  1 raviolamurataj  staff  14662 Oct 22 14:20 GRADING_SPEC.md
+-rw-r--r--@  1 raviolamurataj  staff  12595 Oct 22 14:20 README.md
+drwxr-xr-x@  3 raviolamurataj  staff     96 Oct 22 14:21 __pycache__
+drwxr-xr-x@  4 raviolamurataj  staff    128 Oct 25 14:08 data
+-rwxr-xr-x@  1 raviolamurataj  staff  13266 Oct 22 14:20 generate_data.py
+drwxr-xr-x@  3 raviolamurataj  staff     96 Oct 24 22:43 output
+-rwxr-xr-x@  1 raviolamurataj  staff    280 Oct 22 21:27 q1_setup_project.sh
+-rw-r--r--@  1 raviolamurataj  staff     58 Oct 22 14:20 q2_config.txt
+-rwxr-xr-x@  1 raviolamurataj  staff   6584 Oct 24 23:47 q2_process_metadata.py
+-rw-r--r--@  1 raviolamurataj  staff   5878 Oct 22 20:37 q3_data_utils.py
+-rw-r--r--@  1 raviolamurataj  staff   7309 Oct 22 14:20 q4_exploration.ipynb
+-rw-r--r--@  1 raviolamurataj  staff   4824 Oct 22 14:20 q5_missing_data.ipynb
+-rw-r--r--@  1 raviolamurataj  staff   6194 Oct 22 14:20 q6_transformation.ipynb
+-rw-r--r--@  1 raviolamurataj  staff   4995 Oct 22 14:20 q7_aggregation.ipynb
+-rwxr-xr-x@  1 raviolamurataj  staff    908 Oct 22 14:20 q8_run_pipeline.sh
+drwxr-xr-x@  3 raviolamurataj  staff     96 Oct 25 00:07 reports
+-rw-r--r--@  1 raviolamurataj  staff     91 Oct 22 14:20 requirements.txt
+-rw-r--r--@  1 raviolamurataj  staff     38 Oct 22 21:07 test_script.sh
+drwxr-xr-x@  7 raviolamurataj  staff    224 Oct 25 14:07 venv
